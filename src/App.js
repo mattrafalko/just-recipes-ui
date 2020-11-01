@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Recipes from './components/Views/Recipes'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Login from './components/Views/Login';
 
 function App() {
+  const [userId, setUserId] = useState('');
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Header appName="Just Recipes" userId={userId}></Header>
+          <Switch>
+            <Route exact path="/"><p>This is the home page</p></Route>
+            <Route path="/about"><p>This is the about page</p></Route>
+            <Route path="/recipes"><Recipes userId={userId}/></Route>
+            <Route path="/login"><Login setIdOnLogin={(e) => setUserId(e)}/></Route>
+          </Switch>
+        <Footer></Footer>
+      </Router>
     </div>
   );
 }
