@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-import { UserContext } from '../../UserContext';
+import React, {useContext} from 'react';
+import { UserContext } from '../../App';
 
 function Recipes(){
-    const { userId, setUserId } = useContext(UserContext);
+    const userId = useContext(UserContext);
     return (
         <div>
-            <h3>Hi {userId} These are you're saved recipes</h3>
+            <h3>Hi {userId}. These are you're saved recipes</h3>
         </div>
     )
 }

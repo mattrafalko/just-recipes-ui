@@ -1,12 +1,14 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { UserContext } from '../../UserContext';
+import {UserContext, UserContextUpdate} from '../../App'
 
 function Login(){
     const loginUrl = 'http://localhost:8090/login';
     const [userName, setUserName] = useState('');
     const [userPassword, setUserPassword] = useState('');
-    const {userId, setUserId } = useContext(UserContext);
+    const userId = useContext(UserContext);
+    const setUserId = useContext(UserContextUpdate);
+
     let inputStyles =
     "bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal my-3";
 
@@ -23,6 +25,7 @@ function Login(){
             console.log(response.data);
             setUserId(response.data);
             window.location.replace("/recipes")
+            console.log("UserId: " + userId);
         }).catch(function (error){
             console.log(error);
             alert("Login failed");
