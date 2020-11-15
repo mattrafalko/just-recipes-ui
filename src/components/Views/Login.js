@@ -6,8 +6,7 @@ function Login() {
   const loginUrl = 'http://localhost:8090/login';
   const [userName, setUserName] = useState('');
   const [userPassword, setUserPassword] = useState('');
-  const context_userId = useContext(UserContext);
-  const [userId, setUserId] = useState(context_userId);
+  const { userId, setUserId } = useContext(UserContext);
 
   let inputStyles =
     'bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal my-3';
