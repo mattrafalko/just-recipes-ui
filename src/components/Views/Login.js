@@ -45,7 +45,7 @@ function Login() {
       <input
         type='password'
         required
-        placreholder='Password'
+        placeholder='Password'
         onChange={(e) => setUserPassword(e.target.value)}
         className={inputStyles}
       ></input>
